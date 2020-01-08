@@ -7,25 +7,21 @@ class GlobalTimeSelector extends Component {
     //#region Fields
     state = {
         minMinutes: 1,
-        maxMinutes: 120,
-        currentValue:  60
+        maxMinutes: 120
     };
     //#endregion
 
     //#region Public methods
     changeSlideValue = function(value) {
-        console.log('value :', value);
-        const newState = {...this.state};
-
-        newState.currentValue = value;
-
-        this.setState(newState);
+        if (this.props.changeGlobalTime) {
+            this.props.changeGlobalTime(value);
+        }
     }
 
     render() {
         return (
             <div>
-                <Label>Temps global : </Label> <Slider min={this.state.minMinutes} max={this.state.maxMinutes} defaultValue={this.state.currentValue} onChange={this.changeSlideValue.bind(this)}></Slider>
+                <Label>Temps global : </Label> <Slider min={this.state.minMinutes} max={this.state.maxMinutes} defaultValue={this.props.defaultValue} onChange={this.changeSlideValue.bind(this)}></Slider>
             </div>
         );
     }
