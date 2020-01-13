@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import { observer } from "mobx-react"
+
 import GlobalTimeSelector from '../../../components/GlobalTimeSelector/GlobalTimeSelector';
 import GlobalTimeCircle from '../../../components/GlobalTimeCircle/GlobalTimeCircle';
 import { Button } from 'office-ui-fabric-react/lib/Button';
 
 /** Container to display time zone circle, time global input, ... */
+@observer
 class TimeTasks extends Component {
     //#region Fields
     state = {
