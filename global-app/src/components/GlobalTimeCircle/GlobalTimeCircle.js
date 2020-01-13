@@ -3,7 +3,7 @@ import styles from './global-time-circle.module.css';
 
 const GlobalTimeCircle = (props) => {
     let currentGaugeColor = '#a0c884';
-    let currentGaugePourcent = 1;
+    let currentGaugePourcent = 10;
     let currentGaugeBackground = `linear-gradient(${currentGaugeColor} ${currentGaugePourcent}%, #426e1f ${currentGaugePourcent}%)`;
     let currentGaugeWidth = 500;
     let currentGaugeHeight = 500;
