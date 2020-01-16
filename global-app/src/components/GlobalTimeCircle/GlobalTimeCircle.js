@@ -25,7 +25,8 @@ const GlobalTimeCircle = observer((props) => {
     };
 
     return (
-        <div className={styles.parentCircle} style={ style }></div>
+        <div className={styles.parentCircle} style={ style }>
+        </div>
     );
 });
 

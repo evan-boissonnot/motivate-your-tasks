@@ -24,7 +24,6 @@ class GlobalTimeSelector extends Component {
     render() {
         return (
             <div>
-            <Label>Temps global : </Label> 
             <Slider 
                 min={this.minMinutes} max={this.maxMinutes} 
                 defaultValue={this.store.totalTime} 
