@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import TimeTasks from './TimeTasks/TimeTasks';
-import TimeState from '../../states/TimeState';
+import TimeStore from '../../states/TimeStore';
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
       <header className="">
         <h1>Let's motivate you !</h1>
       </header>
-      <TimeTasks timeState={new TimeState()}></TimeTasks>
+      <TimeTasks store={new TimeStore()}></TimeTasks>
     </div>
   );
 }

@@ -1,15 +1,18 @@
-import React, { Component } from 'react';
-import { Slider } from 'office-ui-fabric-react/lib/Slider';
+import { observer } from 'mobx-react';
 import { Label } from 'office-ui-fabric-react/lib/Label';
+import { Slider } from 'office-ui-fabric-react/lib/Slider';
+import React, { Component } from 'react';
 
 /** Component to allows you to set input global time */
+@observer
 class GlobalTimeSelector extends Component {
-    //#region Fields
-    state = {
-        minMinutes: 1,
-        maxMinutes: 120
-    };
-    //#endregion
+    constructor(props) {
+        super(props);
+
+        this.store = this.props.store;
+        this.minMinutes = 1;
+        this.maxMinutes = 120;
+    }
 
     //#region Public methods
     changeSlideValue = function(value) {
@@ -21,7 +24,7 @@ class GlobalTimeSelector extends Component {
     render() {
         return (
             <div>
-                <Label>Temps global : </Label> <Slider min={this.state.minMinutes} max={this.state.maxMinutes} defaultValue={this.props.defaultValue} onChange={this.changeSlideValue.bind(this)}></Slider>
+                <Label>Temps global : </Label> <Slider min={this.minMinutes} max={this.maxMinutes} defaultValue={this.props.defaultValue} onChange={this.changeSlideValue.bind(this)}></Slider>
             </div>
         );
     }

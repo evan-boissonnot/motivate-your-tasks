@@ -15,45 +15,29 @@ import { Button } from 'office-ui-fabric-react/lib/Button';
 @observer
 class TimeTasks extends Component {
     //#region Fields
-    state = {
-        defaultValue: 60,
-        globalTime: 60,
-        timeoutValue: 1000,
-    }
     //#endregion
 
     constructor(props) {
         super(props);
 
-        this.timeState = props.timeState;
+        this.store = props.store;
 
         this.startTimer = this.startTimer.bind(this);
-        this._timer = 0;
         this.isStartCountDown = false;
     }
 
     //#region Public methods
     startTimer = () => {
-        console.log('startTimer::this.state.globalTime', this.state.globalTime);
-
-        if (this._timer === 0 && this.state.globalTime > 0) {
-            this.isStartCountDown = true;
-            this.currentTime = this.state.globalTime;
-
-            this.timeState.start({
-                maxTime: this.state.globalTime,
-                intervalTime: this.state.timeoutValue
-            });
-        }
+        this.store.start({
+            
+        });
     }
 
     /**
      * Change global time, so it will change the dedicated component too
      */
     changeGlobalTime = function (value) {
-        console.log('changeGlobalTime::value', value);
-        this.globalTime = value;
-        console.log('changeGlobalTime::globalTime', this.globalTime);
+        this.store.timer = value;
     }
 
     render() {
@@ -61,45 +45,19 @@ class TimeTasks extends Component {
 
         return (
             <div className="time-selector">
-                <b>{this.timeState.timer}</b>
-                <GlobalTimeSelector defaultValue={this.state.defaultValue} changeGlobalTime={this.changeGlobalTime.bind(this)}></GlobalTimeSelector>
+                <b>{this.store.timer}</b>
+                <GlobalTimeSelector store={ this.store } changeGlobalTime={this.changeGlobalTime.bind(this)}></GlobalTimeSelector>
                 <Button key="startCountDown" onClick={self.startTimer} disabled={self.isStartCountDown}>Démarrer le compte à rebours !</Button>
-                <GlobalTimeCircle timeValue={this.state.globalTime}></GlobalTimeCircle>
+                <GlobalTimeCircle store={ this.store }></GlobalTimeCircle>
             </div>
         );
     }
     //#endregion
 
     //#region Internal methods
-    countDown() {
-        this.currentTime--;
-
-        this.isStartCountDown = (this.currentTime > 0);
-
-        if (!this.isStartCountDown) {
-            const id = this.intervalId;
-            this.intervalId = 0;
-            clearInterval(id);
-
-        }
-    }
-
     //#endregion
 
     //#region Properties
-    get globalTime() {
-        return this.state.globalTime;
-    }
-
-    set globalTime(value) {
-        console.log('set globalTime(value) :', value);
-
-        this.setState({
-            globalTime: value
-        });
-
-        console.log('set globalTime(value)>> this.state.globalTime', this.state.globalTime);
-    }
     //#endregion
 }
 

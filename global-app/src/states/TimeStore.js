@@ -4,10 +4,11 @@ import { observable, action } from 'mobx';
  * State to store and change changing time 
  * Note: it's an observer (mobx)
 */
-class TimeState {
+class TimeStore {
     //#region Fields
     @observable timer = 0;
-    @observable totalTime = 0;
+    @observable totalTime = 60;
+    intervalTime = 1000;
     //#endregion
 
     //#region Public methods
@@ -17,7 +18,7 @@ class TimeState {
     start(options) {
         this._intervalId = setInterval(() => {
             this.countdown();
-        }, options.intervalTime);
+        }, this.intervalTime);
     }
 
     /**
@@ -36,9 +37,13 @@ class TimeState {
     //#region Internal methods
     @action
     countdown() {
-        this.timer ++;
+        this.timer --;
+
+        if (this.timer <= 0) {
+            this.reset();
+        }
     }
     //#endregion
 }
 
-export default TimeState;
+export default TimeStore;
