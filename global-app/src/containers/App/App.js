@@ -9,7 +9,7 @@ function App() {
       <header className="">
         <h1>Let's motivate you !</h1>
       </header>
-      <TimeTasks state={new TimeState()}></TimeTasks>
+      <TimeTasks timeState={new TimeState()}></TimeTasks>
     </div>
   );
 }

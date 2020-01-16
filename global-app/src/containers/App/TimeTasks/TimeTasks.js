@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { observer } from "mobx-react"
+import { observer } from "mobx-react";
 
 import GlobalTimeSelector from '../../../components/GlobalTimeSelector/GlobalTimeSelector';
 import GlobalTimeCircle from '../../../components/GlobalTimeCircle/GlobalTimeCircle';
@@ -12,7 +12,7 @@ import { Button } from 'office-ui-fabric-react/lib/Button';
 //#endregion
 
 /** Container to display time zone circle, time global input, ... */
-
+@observer
 class TimeTasks extends Component {
     //#region Fields
     state = {
@@ -25,7 +25,7 @@ class TimeTasks extends Component {
     constructor(props) {
         super(props);
 
-        this.state = props.state;
+        this.timeState = props.timeState;
 
         this.startTimer = this.startTimer.bind(this);
         this._timer = 0;
@@ -39,6 +39,11 @@ class TimeTasks extends Component {
         if (this._timer === 0 && this.state.globalTime > 0) {
             this.isStartCountDown = true;
             this.currentTime = this.state.globalTime;
+
+            this.timeState.start({
+                maxTime: this.state.globalTime,
+                intervalTime: this.state.timeoutValue
+            });
         }
     }
 
@@ -56,6 +61,7 @@ class TimeTasks extends Component {
 
         return (
             <div className="time-selector">
+                <b>{this.timeState.timer}</b>
                 <GlobalTimeSelector defaultValue={this.state.defaultValue} changeGlobalTime={this.changeGlobalTime.bind(this)}></GlobalTimeSelector>
                 <Button key="startCountDown" onClick={self.startTimer} disabled={self.isStartCountDown}>Démarrer le compte à rebours !</Button>
                 <GlobalTimeCircle timeValue={this.state.globalTime}></GlobalTimeCircle>
