@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import TimeTasks from './TimeTasks/TimeTasks';
+import TimeState from '../../states/TimeState';
 
 function App() {
   return (
@@ -8,7 +9,7 @@ function App() {
       <header className="">
         <h1>Let's motivate you !</h1>
       </header>
-      <TimeTasks></TimeTasks>
+      <TimeTasks timeState={new TimeState()}></TimeTasks>
     </div>
   );
 }
