@@ -30,7 +30,6 @@ class TimeStore {
      */
     @action.bound
     reset() {
-        this.totalTime = 60;
         this.timer = this.totalTime;
         this.countDownIsStarted = false;
 
