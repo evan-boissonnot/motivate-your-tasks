@@ -8,27 +8,34 @@ import React, { Component } from 'react';
 class GlobalTimeSelector extends Component {
     constructor(props) {
         super(props);
-
+        
         this.store = this.props.store;
         this.minMinutes = 1;
         this.maxMinutes = 120;
     }
-
+    
     //#region Public methods
     changeSlideValue = function(value) {
         if (this.props.changeGlobalTime) {
             this.props.changeGlobalTime(value);
         }
     }
-
+    
     render() {
         return (
             <div>
-                <Label>Temps global : </Label> <Slider min={this.minMinutes} max={this.maxMinutes} defaultValue={this.props.defaultValue} onChange={this.changeSlideValue.bind(this)}></Slider>
+            <Label>Temps global : </Label> 
+            <Slider 
+                min={this.minMinutes} max={this.maxMinutes} 
+                defaultValue={this.store.totalTime} 
+                onChange={this.changeSlideValue.bind(this)}
+                disabled={ this.store.countDownIsStarted }
+                >
+            </Slider>
             </div>
-        );
+            );
+        }
+        //#endregion
     }
-    //#endregion
-}
-
-export default GlobalTimeSelector;
+    
+    export default GlobalTimeSelector;

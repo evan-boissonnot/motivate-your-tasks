@@ -1,4 +1,4 @@
-import { observable, action } from 'mobx';
+import { observable, action, computed } from 'mobx';
 
 /** 
  * State to store and change changing time 
@@ -6,8 +6,9 @@ import { observable, action } from 'mobx';
 */
 class TimeStore {
     //#region Fields
-    @observable timer = 0;
+    @observable timer = 60;
     @observable totalTime = 60;
+    @observable countDownIsStarted = false;
     intervalTime = 1000;
     //#endregion
 
@@ -16,6 +17,9 @@ class TimeStore {
      * Starts the countdown
      */
     start(options) {
+        this.timer = this.totalTime;
+        this.countDownIsStarted = true;
+
         this._intervalId = setInterval(() => {
             this.countdown();
         }, this.intervalTime);
@@ -26,7 +30,9 @@ class TimeStore {
      */
     @action.bound
     reset() {
-        this.timer = 0;
+        this.totalTime = 60;
+        this.timer = this.totalTime;
+        this.countDownIsStarted = false;
 
         if (this._intervalId && this._intervalId > 0) {
             clearInterval(this._intervalId );
@@ -42,6 +48,13 @@ class TimeStore {
         if (this.timer <= 0) {
             this.reset();
         }
+    }
+    //#endregion
+
+    //#region Properties
+    @computed
+    get pourcent() {
+        return this.countDownIsStarted ? (this.timer / this.totalTime) * 100 : 100;
     }
     //#endregion
 }

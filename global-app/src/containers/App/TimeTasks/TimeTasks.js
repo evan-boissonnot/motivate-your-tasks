@@ -29,7 +29,7 @@ class TimeTasks extends Component {
     //#region Public methods
     startTimer = () => {
         this.store.start({
-            
+
         });
     }
 
@@ -37,7 +37,7 @@ class TimeTasks extends Component {
      * Change global time, so it will change the dedicated component too
      */
     changeGlobalTime = function (value) {
-        this.store.timer = value;
+        this.store.totalTime = value;
     }
 
     render() {
@@ -47,7 +47,7 @@ class TimeTasks extends Component {
             <div className="time-selector">
                 <b>{this.store.timer}</b>
                 <GlobalTimeSelector store={ this.store } changeGlobalTime={this.changeGlobalTime.bind(this)}></GlobalTimeSelector>
-                <Button key="startCountDown" onClick={self.startTimer} disabled={self.isStartCountDown}>Démarrer le compte à rebours !</Button>
+                <Button key="startCountDown" onClick={self.startTimer} disabled={self.store.countDownIsStarted}>Démarrer le compte à rebours !</Button>
                 <GlobalTimeCircle store={ this.store }></GlobalTimeCircle>
             </div>
         );
