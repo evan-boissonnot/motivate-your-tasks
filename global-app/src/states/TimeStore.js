@@ -16,8 +16,9 @@ class TimeStore {
     /**
      * Starts the countdown
      */
+    @action
     start(options) {
-        this.timer = this.totalTime;
+        this.timer = this.totalTime * 60;
         this.countDownIsStarted = true;
 
         this._intervalId = setInterval(() => {
@@ -53,7 +54,13 @@ class TimeStore {
     //#region Properties
     @computed
     get pourcent() {
-        return this.countDownIsStarted ? (this.timer / this.totalTime) * 100 : 100;
+        const value = this.countDownIsStarted ? (this.timer / (this.totalTime * 60)) * 100 : 100;
+
+        console.log('this.timer :', this.timer);
+        console.log('pourcent : ', value);
+        console.log('this.totalTime :', this.totalTime);
+
+        return value;
     }
     //#endregion
 }
