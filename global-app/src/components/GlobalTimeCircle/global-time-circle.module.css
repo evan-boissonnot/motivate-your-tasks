@@ -7,3 +7,13 @@
     margin-right: auto;
     background-color: #426e1f;
 }
+
+.parentCircle > div {
+    font-size: 50px;
+    color: wheat;
+    font-weight: bold;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 500px;
+}

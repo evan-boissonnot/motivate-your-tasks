@@ -24,8 +24,16 @@ const GlobalTimeCircle = observer((props) => {
         height: currentGaugeHeight + 'px'
     };
 
+    const childStyle = {
+        lineHeight: currentGaugeWidth + 'px',
+        fontSize: +(currentGaugeWidth / 10) + 'px'
+    }
+
     return (
         <div className={styles.parentCircle} style={ style }>
+            <div style={ childStyle }>
+                { store.timerAsMinutes }
+            </div>
         </div>
     );
 });

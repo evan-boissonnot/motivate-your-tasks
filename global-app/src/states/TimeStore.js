@@ -56,11 +56,12 @@ class TimeStore {
     get pourcent() {
         const value = this.countDownIsStarted ? (this.timer / (this.totalTime * 60)) * 100 : 100;
 
-        console.log('this.timer :', this.timer);
-        console.log('pourcent : ', value);
-        console.log('this.totalTime :', this.totalTime);
-
         return value;
+    }
+
+    @computed
+    get timerAsMinutes() {
+        return Math.floor(this.timer / 60);
     }
     //#endregion
 }
