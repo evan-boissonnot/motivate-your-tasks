@@ -28,16 +28,14 @@ class TimeTasks extends Component {
 
     //#region Public methods
     startTimer = () => {
-        this.store.start({
-
-        });
+        this.store.start({});
     }
 
     /**
      * Change global time, so it will change the dedicated component too
      */
     changeGlobalTime = function (value) {
-        this.store.totalTime = value;
+        this.store.setTotalTime(value);
     }
 
     render() {

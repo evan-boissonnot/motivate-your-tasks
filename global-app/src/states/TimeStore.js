@@ -6,13 +6,20 @@ import { observable, action, computed } from 'mobx';
 */
 class TimeStore {
     //#region Fields
-    @observable timer = 60;
+    @observable timer = 3600;
     @observable totalTime = 60;
     @observable countDownIsStarted = false;
     intervalTime = 1000;
     //#endregion
 
+    
     //#region Public methods
+    @action
+    setTotalTime(value) {
+        this.totalTime = value;
+        this.timer = this.totalTime * 60;
+    }
+    
     /**
      * Starts the countdown
      */

@@ -26,7 +26,7 @@ const GlobalTimeCircle = observer((props) => {
 
     const childStyle = {
         lineHeight: currentGaugeWidth + 'px',
-        fontSize: +(currentGaugeWidth / 10) + 'px'
+        fontSize: +(currentGaugeWidth / 5) + 'px'
     }
 
     return (
