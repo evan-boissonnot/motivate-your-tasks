@@ -4,6 +4,7 @@ import { observer } from "mobx-react";
 import GlobalTimeSelector from '../../../components/GlobalTimeSelector/GlobalTimeSelector';
 import GlobalTimeCircle from '../../../components/GlobalTimeCircle/GlobalTimeCircle';
 import { Button } from 'office-ui-fabric-react/lib/Button';
+import RestingTimeInfo from '../../../components/RestingTimeInfo/RestingTimeInfo';
 
 //#region Helps
 // https://www.freecodecamp.org/news/get-pro-with-react-setstate-in-10-minutes-d38251d1c781/
@@ -48,6 +49,7 @@ class TimeTasks extends Component {
                 <Button key="startCountDown" onClick={self.startTimer} disabled={self.store.countDownIsStarted}>Démarrer le compte à rebours !</Button>
                 <Button key="resetCountDown" onClick={self.reset} disabled={! self.store.countDownIsStarted}>Annuler le compte à rebours !</Button>
                 <GlobalTimeCircle store={ this.store }></GlobalTimeCircle>
+                <RestingTimeInfo store={ this.store }></RestingTimeInfo>
             </div>
         );
     }
