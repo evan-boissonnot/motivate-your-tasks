@@ -32,6 +32,10 @@ class TimeTasks extends Component {
         this.store.start({});
     }
 
+    reset = () => {
+        this.store.reset();
+    }
+
     /**
      * Change global time, so it will change the dedicated component too
      */

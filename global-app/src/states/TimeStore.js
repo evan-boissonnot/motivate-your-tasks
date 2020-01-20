@@ -39,6 +39,8 @@ class TimeStore {
      */
     @action.bound
     reset() {
+        console.log('reset');
+
         this.timer = this.totalTime;
         this.countDownIsStarted = false;
 
