@@ -6,10 +6,11 @@ import { observable, action, computed } from 'mobx';
 */
 class TimeStore {
     //#region Fields
-    @observable timer = 3600;
+    @observable timer = 60;
     @observable totalTime = 60;
     @observable countDownIsStarted = false;
     intervalTime = 1000;
+    _unity = 60;
     //#endregion
 
     
@@ -17,15 +18,15 @@ class TimeStore {
     @action
     setTotalTime(value) {
         this.totalTime = value;
-        this.timer = this.totalTime * 60;
+        this.timer = this.totalTime * this._unity;
     }
-    
+
     /**
      * Starts the countdown
      */
     @action
     start(options) {
-        this.timer = this.totalTime * 60;
+        this.timer = this.totalTime * this._unity;
         this.countDownIsStarted = true;
 
         this._intervalId = setInterval(() => {
@@ -61,14 +62,15 @@ class TimeStore {
     //#region Properties
     @computed
     get pourcent() {
-        const value = this.countDownIsStarted ? (this.timer / (this.totalTime * 60)) * 100 : 100;
+        const value = this.countDownIsStarted ? (this.timer / (this.totalTime * this._unity)) * 100 : 100;
 
-        return value;
+        return value.toFixed(2);
     }
 
     @computed
     get timerAsMinutes() {
-        return Math.floor(this.timer / 60);
+        const value = (this.timer / this._unity); 
+        return Math.floor(value);
     }
     //#endregion
 }

@@ -32,7 +32,7 @@ const GlobalTimeCircle = observer((props) => {
     return (
         <div className={styles.parentCircle} style={ style }>
             <div style={ childStyle }>
-                { store.timerAsMinutes }
+                { store.pourcent } %
             </div>
         </div>
     );

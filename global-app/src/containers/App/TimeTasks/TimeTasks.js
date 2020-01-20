@@ -46,6 +46,7 @@ class TimeTasks extends Component {
                 <h1>Temps global</h1>
                 <GlobalTimeSelector store={ this.store } changeGlobalTime={this.changeGlobalTime.bind(this)}></GlobalTimeSelector>
                 <Button key="startCountDown" onClick={self.startTimer} disabled={self.store.countDownIsStarted}>Démarrer le compte à rebours !</Button>
+                <Button key="resetCountDown" onClick={self.reset} disabled={! self.store.countDownIsStarted}>Annuler le compte à rebours !</Button>
                 <GlobalTimeCircle store={ this.store }></GlobalTimeCircle>
             </div>
         );
