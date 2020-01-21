@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import TimeTasks from './TimeTasks/TimeTasks';
+import TimeTasks from '../TimeTasks/TimeTasks';
 import TimeStore from '../../states/TimeStore';
 
 function App() {

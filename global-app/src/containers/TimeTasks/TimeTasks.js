@@ -2,9 +2,9 @@ import { observer } from "mobx-react";
 import { Button } from 'office-ui-fabric-react/lib/Button';
 import React, { Component } from 'react';
 
-import GlobalTimeCircle from '../../../components/GlobalTimeCircle/GlobalTimeCircle';
-import GlobalTimeSelector from '../../../components/GlobalTimeSelector/GlobalTimeSelector';
-import RestingTimeInfo from '../../../components/RestingTimeInfo/RestingTimeInfo';
+import GlobalTimeCircle from '../../components/GlobalTimeCircle/GlobalTimeCircle';
+import GlobalTimeSelector from '../../components/GlobalTimeSelector/GlobalTimeSelector';
+import RestingTimeInfo from '../RestingTimeInfo/RestingTimeInfo';
 import './time-tasks.css';
 
 

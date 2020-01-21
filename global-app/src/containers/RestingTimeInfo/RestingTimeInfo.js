@@ -2,7 +2,7 @@ import React  from 'react';
 import { observer } from "mobx-react";
 
 import './resting-time-info.css';
-import Smiley from '../Smiley/Smiley';
+import Smiley from '../../components/Smiley/Smiley';
 
 const RestingTimeInfo = observer((props) => {
     const store = props.store;
