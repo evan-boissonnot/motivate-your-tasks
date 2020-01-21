@@ -8,7 +8,7 @@ const RestingTimeInfo = observer((props) => {
 
     return (
         <div className="resting-time-info">
-            To be continued ....
+            
         </div>
     )
 });
