@@ -9,7 +9,7 @@ const RestingTimeInfo = observer((props) => {
 
     return (
         <div className="resting-time-info">
-            <Smiley></Smiley>
+            <Smiley store={ store }></Smiley>
         </div>
     )
 });

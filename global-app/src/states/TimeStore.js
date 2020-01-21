@@ -10,7 +10,7 @@ class TimeStore {
     @observable totalTime = 60;
     @observable countDownIsStarted = false;
     intervalTime = 1000;
-    _unity = 60;
+    _unity = 1;
     //#endregion
 
     
