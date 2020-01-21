@@ -49,5 +49,8 @@ if (
   argv.push(hasSourceControl ? '--watch' : '--watchAll');
 }
 
+argv.push('--no-cache');
+
+console.log('argv', argv);
 
 jest.run(argv);
