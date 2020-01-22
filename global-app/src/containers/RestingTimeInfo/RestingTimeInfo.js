@@ -3,6 +3,7 @@ import { observer } from "mobx-react";
 
 import './resting-time-info.css';
 import Smiley from '../../components/Smiley/Smiley';
+import TimeInfoWithText from '../../components/TimeInfoWithText/TimeInfoWithText';
 
 const RestingTimeInfo = observer((props) => {
     const store = props.store;
@@ -10,6 +11,7 @@ const RestingTimeInfo = observer((props) => {
     return (
         <div className="resting-time-info">
             <Smiley store={ store }></Smiley>
+            <TimeInfoWithText store={ store } ></TimeInfoWithText>
         </div>
     )
 });

@@ -2,16 +2,17 @@ import React  from 'react';
 import './smiley.css';
 import { observer } from "mobx-react";
 
+import timeRuleService from '../../services/TimeRule.Service/TimeRule.Service';
+
 const Smiley = observer((props) => {
     const store = props.store;
     let currentSmileyClassName = 'smiley-';
-    let smileyColor = 'green';
+    let smileyColor = '';
 
-    if (store.pourcent >= 30 && store.pourcent < 65) {
-        smileyColor = 'yellow';
-    } else if (store.pourcent < 30) {
-        smileyColor = 'red';
-    }
+    timeRuleService(store, () => smileyColor = 'green', 
+                           () => smileyColor = 'yellow', 
+                           () => smileyColor = 'red');
+    
     currentSmileyClassName = currentSmileyClassName + smileyColor;
 
     return (
