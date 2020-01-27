@@ -50,6 +50,7 @@ class TimeTasks extends Component {
         const self = this;
 
         return (
+            
             <div className="time-selector">
                 <h1>Temps global</h1>
                 <GlobalTimeSelector store={ this.store } changeGlobalTime={this.changeGlobalTime.bind(this)}></GlobalTimeSelector>
