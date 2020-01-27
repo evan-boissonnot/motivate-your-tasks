@@ -1,6 +1,7 @@
 import { observer } from "mobx-react";
 import { Button } from 'office-ui-fabric-react/lib/Button';
 import React, { Component } from 'react';
+import 'office-ui-fabric-react/dist/css/fabric.min.css';
 
 import GlobalTimeCircle from '../../components/GlobalTimeCircle/GlobalTimeCircle';
 import GlobalTimeSelector from '../../components/GlobalTimeSelector/GlobalTimeSelector';
@@ -20,56 +21,71 @@ import './time-tasks.css';
 class TimeTasks extends Component {
     //#region Fields
     //#endregion
-
+    
     constructor(props) {
         super(props);
-
+        
         this.store = props.store;
-
+        
         this.startTimer = this.startTimer.bind(this);
         this.isStartCountDown = false;
     }
-
+    
     //#region Public methods
     startTimer = () => {
         this.store.start({});
     }
-
+    
     reset = () => {
         this.store.reset();
     }
-
+    
     /**
-     * Change global time, so it will change the dedicated component too
-     */
+    * Change global time, so it will change the dedicated component too
+    */
     changeGlobalTime = function (value) {
         this.store.setTotalTime(value);
     }
-
+    
     render() {
         const self = this;
-
+        
         return (
-            
-            <div className="time-selector">
-                <h1>Temps global</h1>
-                <GlobalTimeSelector store={ this.store } changeGlobalTime={this.changeGlobalTime.bind(this)}></GlobalTimeSelector>
-                <Button key="startCountDown" onClick={self.startTimer} disabled={self.store.countDownIsStarted}>Démarrer le compte à rebours !</Button>
-                <Button key="resetCountDown" onClick={self.reset} disabled={! self.store.countDownIsStarted}>Annuler le compte à rebours !</Button>
-                <div className="activity flex">
-                    <GlobalTimeCircle store={ this.store }></GlobalTimeCircle>
+            <div class="ms-Grid" dir="ltr">
+                <div class="ms-Grid-row">
+                    <div class="ms-Grid-col ms-sm12">
+                        <GlobalTimeSelector store={ this.store } changeGlobalTime={this.changeGlobalTime.bind(this)}></GlobalTimeSelector>
+                    </div>
+                </div>
+            <div class="ms-Grid-row">
+                <div class="ms-Grid-col ms-sm12">
+                    <Button key="startCountDown" onClick={self.startTimer} disabled={self.store.countDownIsStarted}>Démarrer le compte à rebours !</Button>
+                </div>
+                <div class="ms-Grid-col ms-sm12">
+                    <Button key="resetCountDown" onClick={self.reset} disabled={! self.store.countDownIsStarted}>Annuler le compte à rebours !</Button>
+                </div>
+            </div>
+            <div class="ms-Grid-row">
+                <div class="ms-Grid-col ms-sm12">
                     <RestingTimeInfo store={ this.store }></RestingTimeInfo>
                 </div>
             </div>
-        );
+            <div class="ms-Grid-row">
+                <div class="ms-Grid-col">
+                    <GlobalTimeCircle store={ this.store }></GlobalTimeCircle>
+                </div>
+            </div>
+            
+            </div>
+            );
+        }
+        //#endregion
+        
+        //#region Internal methods
+        //#endregion
+        
+        //#region Properties
+        //#endregion
     }
-    //#endregion
-
-    //#region Internal methods
-    //#endregion
-
-    //#region Properties
-    //#endregion
-}
-
-export default TimeTasks;
+    
+    export default TimeTasks;
